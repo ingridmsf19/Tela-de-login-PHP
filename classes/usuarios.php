@@ -3,7 +3,7 @@
 class Usuario{
 
     private $pdo;
-    public $msgErro = "";
+    public $msgErro = ""; // tudo ok
 
     public function conectar($nome, $host, $usuario, $senha)
     {
@@ -34,7 +34,7 @@ class Usuario{
             $sql->bindValue(":n", $nome);
             $sql->bindValue(":t", $telefone);
             $sql->bindValue(":e", $email);
-            $sql->bindValue(":s", $senha);
+            $sql->bindValue(":s", md5($senha));
             $sql->execute();
 
             return true;
